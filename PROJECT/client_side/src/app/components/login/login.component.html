@@ -1,0 +1,84 @@
+<div class="height-100vh container-fluid flex-column d-flex justify-content-center align-items-center">
+  <form class="form-container p-5" (ngSubmit)="isLogin ? onLogin() : onRegister()" #authForm="ngForm">
+    <div class="mb-3" *ngIf="!isLogin">
+      <label for="nom" class="form-label">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nom"
+        placeholder="Enter your first name"
+        [(ngModel)]="nom"
+        name="nom"
+        [required]="!isLogin"
+        [disabled]="isLogin"
+      />
+    </div>
+    <div class="mb-3" *ngIf="!isLogin">
+      <label for="prenom" class="form-label">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="prenom"
+        placeholder="Enter your last name"
+        [(ngModel)]="prenom"
+        name="prenom"
+        [required]="!isLogin"
+        [disabled]="isLogin"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter your email"
+        [(ngModel)]="email"
+        name="email"
+        required
+        email
+      />
+    </div>
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input
+        type="number"
+        class="form-control"
+        id="age"
+        placeholder="Enter your age"
+        [(ngModel)]="age"
+        name="age"
+        [required]="!isLogin"
+        [disabled]="isLogin"
+        min="1"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Enter your password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary w-25 fs-5 mb-1 mx-auto d-block"
+      [disabled]="!authForm.valid"
+    >
+      {{ isLogin ? 'Login' : 'Register' }}
+    </button>
+    <button
+      type="button"
+      class="btn btn-link mt-3 mx-auto d-block"
+      (click)="toggleForm()"
+    >
+      {{ isLogin ? 'Need to register?' : 'Already have an account? Login' }}
+    </button>
+    <p *ngIf="errorMessage" class="text-center mt-3">{{ errorMessage }}</p>
+  </form>
+</div>

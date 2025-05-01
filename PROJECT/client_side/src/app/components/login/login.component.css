@@ -1,0 +1,38 @@
+/* .height-100vh{
+    height:100vh;
+    background-color: rgb(201, 230, 255);
+}
+::placeholder{
+    text-transform: capitalize;
+    font-weight: 300;
+}
+.form-container{
+    width: 500px;
+    background-color: rgb(255, 255, 255);
+    min-height: 50%;
+    border-radius: 10px;
+    border:solid 1px black;
+    box-shadow:1px 1px 8px rgba(0, 0, 0, 0.724)
+}
+input{
+    border:2px solid black;
+    font-weight: 700;
+} */
+
+
+
+
+
+
+
+
+.form-container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  .height-100vh {
+    height: 100vh;
+  }

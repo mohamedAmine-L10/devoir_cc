@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Admin - Order Summary</h2>
+  <div *ngIf="message" class="alert alert-danger text-center">{{ message }}</div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Order Date</th>
+        <th>Product</th>
+        <th>Image</th>
+        <th>Quantity</th>
+        <th>Price (HT)</th>
+        <th>TVA (20%)</th>
+        <th>TTC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let order of orders">
+        <tr *ngFor="let item of order.products; let i = index">
+          <td *ngIf="i === 0" [attr.rowspan]="order.products.length">
+            {{ order.client?.nom }} {{ order.client?.prenom }}
+            ({{ order.client?.email ?? 'Unknown client' }})
+          </td>
+          <td *ngIf="i === 0" [attr.rowspan]="order.products.length">
+            {{ order.date_cmd | date: 'MMM d, y, h:mm:ss a' }}
+          </td>
+          <td>
+            {{ item.product ? item.product.libelle : 'No product found' }}
+          </td>
+          <td>
+            <img *ngIf="item.product?.image" [src]="item.product?.image" alt="Product Image" width="50">
+            <span *ngIf="!item.product?.image">No image</span>
+          </td>
+          <td>
+            {{ item.quantity }}
+          </td>
+          <td>
+            {{ item.product ? (item.product.prix * item.quantity) : 'N/A' }}
+          </td>
+          <td>
+            {{ item.product ? (item.product.prix * item.quantity * tvaRate) : 'N/A' }}
+          </td>
+          <td>
+            {{ item.product ? (item.product.prix * item.quantity * (1 + tvaRate)) : 'N/A' }}
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <a (click)="logout()" class="btn btn-link mt-3 mx-auto d-block">Logout</a>
+</div>

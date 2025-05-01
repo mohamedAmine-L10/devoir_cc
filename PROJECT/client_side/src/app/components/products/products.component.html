@@ -1,0 +1,93 @@
+<!-- <div class="height-100vh container-fluid d-flex justify-content-center align-items-center">
+    <div class="products-container p-5">
+      <h2 class="text-center mb-4">Select Products</h2>
+      <div *ngIf="message" class="alert alert-info text-center">{{ message }}</div>
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let product of products">
+          <div class="card h-100">
+            <img *ngIf="product.image" [src]="product.image" class="card-img-top" alt="{{ product.libelle }}" />
+            <div class="card-body">
+              <h5 class="card-title">{{ product.libelle }}</h5>
+              <p class="card-text">Price: ${{ product.prix }}</p>
+              <div class="input-group mb-3">
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="Quantity"
+                  min="0"
+                  [(ngModel)]="selectedProducts[product._id]"
+                  (ngModelChange)="updateSelection()"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="btn btn-primary w-25 fs-5 mx-auto d-block"
+        (click)="placeOrder()"
+        [disabled]="!hasSelectedProducts"
+      >
+        Place Order
+      </button>
+      <a *ngIf="isAdmin" routerLink="/admin" class="btn btn-link mt-3 mx-auto d-block">Admin Dashboard</a>
+      <a routerLink="/login" class="btn btn-link mt-3 mx-auto d-block">Back to Login</a>
+    </div>
+  </div> -->
+
+
+
+
+
+<!-- 
+  <div class="height-100vh container-fluid d-flex justify-content-center align-items-center">
+    <div class="products-container p-5">
+      <h2 class="text-center mb-4">Products</h2>
+      <div *ngIf="message" class="alert alert-danger text-center">{{ message }}</div>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let product of products">
+          <div class="card mb-4">
+            <img [src]="product.image" class="card-img-top" [alt]="product.libelle">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.libelle }}</h5>
+              <p class="card-text">Price: ${{ product.prix }}</p>
+              <div class="mb-3">
+                <label for="quantity-{{ product._id }}" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="quantity-{{ product._id }}"
+                       [(ngModel)]="product.quantity" min="0" (ngModelChange)="updateQuantities()">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary w-100 fs-5 mb-3" (click)="placeOrder()" [disabled]="!hasSelectedProducts()">Place Order</button>
+      <a routerLink="/login" class="btn btn-link mt-3 mx-auto d-block">Back to Login</a>
+    </div>
+  </div> -->
+
+
+
+  <div class="height-100vh container-fluid d-flex justify-content-center align-items-center">
+    <div class="products-container p-5">
+      <h2 class="text-center mb-4">Products</h2>
+      <div *ngIf="message" class="alert alert-danger text-center">{{ message }}</div>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let product of products">
+          <div class="card mb-4">
+            <img [src]="product.image" class="card-img-top" [alt]="product.libelle">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.libelle }}</h5>
+              <p class="card-text">Price: ${{ product.prix }}</p>
+              <div class="mb-3">
+                <label for="quantity-{{ product._id }}" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="quantity-{{ product._id }}"
+                       [(ngModel)]="product.quantity" min="0" (ngModelChange)="updateQuantities()">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary w-100 fs-5 mb-3" (click)="placeOrder()" [disabled]="!hasSelectedProducts()">Place Order</button>
+      <a (click)="logout()" class="btn btn-link mt-3 mx-auto d-block">Back to Login</a>
+    </div>
+  </div>
